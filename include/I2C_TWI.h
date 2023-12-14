@@ -4,7 +4,7 @@
 #include <util/twi.h>
 #include <util/delay.h>
 #include "common.h"
-class I2C_ATMEGA
+class I2C_TWI
 {
 	public:
 	static void init()
