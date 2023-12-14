@@ -2,6 +2,17 @@
 #include <avr/io.h>
 #include <avr/sfr_defs.h>
 
+/* usage example
+
+using _PORTB = AVRPort<(const int)&PORTB,(const int)&DDRB,(const int)&PINB>;
+using _PORTC = AVRPort<(const int)&PORTC,(const int)&DDRC,(const int)&PINC>;
+using _PORTD = AVRPort<(const int)&PORTD,(const int)&DDRD,(const int)&PIND>;
+
+using _PINB0=AVRPin<_PORTB,PINB0>;
+using _PINB1=AVRPin<_PORTB,PINB1>;
+
+*/
+
 
 template<uint16_t port_addr,uint16_t ddr_addr,uint16_t pin_addr>
 class AVRPort

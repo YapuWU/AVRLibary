@@ -4,16 +4,6 @@
 
 #include "common.h"
 
-/* usage example
-
-using _PORTB = AVRPort<(const int)&PORTB,(const int)&DDRB,(const int)&PINB>;
-using _PORTC = AVRPort<(const int)&PORTC,(const int)&DDRC,(const int)&PINC>;
-using _PORTD = AVRPort<(const int)&PORTD,(const int)&DDRD,(const int)&PIND>;
-
-using _PINB0=AVRPin<_PORTB,PINB0>;
-using _PINB1=AVRPin<_PORTB,PINB1>;
-
-*/
 
 template< class SCL, class SDA ,int delayInUS=4>
 class I2C_GPIO
