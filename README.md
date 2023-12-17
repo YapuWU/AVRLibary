@@ -15,6 +15,7 @@ This library will include the following modules:
 Support basic port and pin operations. This is a basic module that will be used by other modules.
 
 using _PORTB = AVRPort<(const int)&PORTB,(const int)&DDRB,(const int)&PINB>;
+
 using _PINB0=AVRPin<_PORTB,PINB0>;
 using _PINB1=AVRPin<_PORTB,PINB1>;
 
