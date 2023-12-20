@@ -1,5 +1,5 @@
 #pragma once
-template<class FontDESC= FontBytes6X8>
+template<class FontDESC>
 class FontBase
 {
 public:
@@ -21,23 +21,12 @@ public:
 		{
 			return false;
 		}
-    //TODO read program space
-		const uint8_t* pCharBuf = FontDESC::font[c - FontDESC::first];
-		memcpy(pBuffer, pCharBuf, iBufLen);
-		return true;
-	}
-	static bool outputChar(const char c,void (*OUT)(void*,uint8_t),void* pObj)
-	{
-		if (c< FontDESC::first || c>FontDESC::last)
+		for(uint8_t i=0;i<bytesPerChar();i++)
 		{
-			return false;
-		}
-    //TODO read program space
-		const uint8_t* pCharBuf = FontDESC::font[c - FontDESC::first];
-		for (uint8_t i = 0; i < bytesPerChar(); i++)
-		{
-			OUT(pObj, pCharBuf[i]);
+			pBuffer[i] = FontDESC::getByte(c-FontDESC::first,i);
 		}
 		return true;
 	}
+	
+	
 };

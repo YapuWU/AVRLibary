@@ -1,4 +1,5 @@
 #pragma once
+#include <avr/pgmspace.h>
 #include "FontBase.h"
 class FontDesc6X8
 {
@@ -7,7 +8,7 @@ public:
 	static constexpr uint8_t height = 8;
 	static constexpr uint8_t first = ' ';
 	static constexpr uint8_t last =  '~';
-	static constexpr uint8_t font[][6] =
+	static constexpr uint8_t font[][6] PROGMEM=
 	{
 		{0x00, 0x00, 0x00, 0x00, 0x00, 0x00}, // sp
 		{0x00, 0x00, 0x00, 0x2f, 0x00, 0x00}, // !
