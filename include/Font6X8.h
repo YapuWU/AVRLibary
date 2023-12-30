@@ -1,14 +1,8 @@
 #pragma once
 #include <avr/pgmspace.h>
-#include "FontBase.h"
-class FontDesc6X8
-{
-public:
-	static constexpr uint8_t width = 6;
-	static constexpr uint8_t height = 8;
-	static constexpr uint8_t first = ' ';
-	static constexpr uint8_t last =  '~';
-	static constexpr uint8_t font[][6] PROGMEM=
+
+
+	static constexpr uint8_t _font6X8[][6] PROGMEM=
 	{
 		{0x00, 0x00, 0x00, 0x00, 0x00, 0x00}, // sp
 		{0x00, 0x00, 0x00, 0x2f, 0x00, 0x00}, // !
@@ -106,6 +100,26 @@ public:
 		{0x00, 0x00, 0x41, 0x77, 0x08, 0x00}, // }
 		{0x00, 0x08, 0x04, 0x08, 0x08, 0x04}  // ~
 	};
+
+
+class Font6X8
+{
+	public:
+	static constexpr uint8_t width = 6;
+	static constexpr uint8_t height = 8;
+	static constexpr uint8_t first = ' ';
+	static constexpr uint8_t last =  '~';
+	static constexpr uint8_t bytesPerChar = width * height / 8;
+	static uint8_t getByte(uint8_t character,uint8_t iOffset)
+	{
+		if(character<first || character>last)
+		{
+			return 0;
+		}
+		return pgm_read_byte(&_font6X8[character - first][iOffset]);
+	}
+	
+	
 };
 
-using FONT6X8 = FontBase<FontDesc6X8>;
+
