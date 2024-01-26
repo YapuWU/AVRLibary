@@ -87,9 +87,9 @@ class AVRPin
 		return PORTClass::PIN() & (1<<pinNum);
 	}
 	
-	static __attribute__((always_inline)) uint8_t toggle()
+	static __attribute__((always_inline)) void toggle()
 	{
-		return PORTClass::PIN(PORTClass::PIN() |(1<<pinNum));
+		PORTClass::PIN(PORTClass::PIN() |(1<<pinNum));
 	}
 };
 #ifdef PORTB
